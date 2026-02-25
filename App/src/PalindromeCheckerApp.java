@@ -7,7 +7,7 @@ public class PalindromeCheckerApp {
 
         do {
             System.out.println("Welcome to Palindrome Checker App");
-            System.out.println("1. Check Palindrome");
+            System.out.println("1. Check on  Palindrome");
             System.out.println("2. Exit");
             System.out.print("Enter your choice: ");
             choice = sc.nextInt();

@@ -1,21 +1,18 @@
-public class UseCase2PalindromeCheckerApp {
+public class UseCase3PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
         String input = "madam";
-        boolean isPalindrome = true;
+        String reversed = "";
 
-        for (int i = 0; i < input.length() / 2; i++) {
-            if (input.charAt(i) != input.charAt(input.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed = reversed + input.charAt(i);
         }
 
-        if (isPalindrome) {
-            System.out.println(input + " is a Palindrome.");
+        if (input.equals(reversed)) {
+            System.out.println("The following  string is a palindrome.");
         } else {
-            System.out.println(input + " is NOT a Palindrome.");
+            System.out.println("The string is not a palindrome.");
         }
     }
 }

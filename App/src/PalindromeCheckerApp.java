@@ -1,15 +1,6 @@
 import java.util.*;
 
-public class UC8LinkedListPalindromeCheck {
-
-    static class Node {
-        char data;
-        Node next;
-        Node(char data) {
-            this.data = data;
-            this.next = null;
-        }
-    }
+public class UseCase9PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
@@ -19,61 +10,21 @@ public class UC8LinkedListPalindromeCheck {
 
         input = input.replaceAll("\\s+", "").toLowerCase();
 
-        Node head = null;
-        Node tail = null;
+        boolean result = check(input, 0, input.length() - 1);
 
-        for (char c : input.toCharArray()) {
-            Node newNode = new Node(c);
-            if (head == null) {
-                head = newNode;
-                tail = newNode;
-            } else {
-                tail.next = newNode;
-                tail = newNode;
-            }
-        }
-
-        if (head == null || head.next == null) {
-            System.out.println("The string is a Palindrome.");
-            return;
-        }
-
-        Node slow = head;
-        Node fast = head;
-
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-
-        Node prev = null;
-        Node current = slow;
-        while (current != null) {
-            Node nextNode = current.next;
-            current.next = prev;
-            prev = current;
-            current = nextNode;
-        }
-
-        Node firstHalf = head;
-        Node secondHalf = prev;
-        boolean isPalindrome = true;
-
-        while (secondHalf != null) {
-            if (firstHalf.data != secondHalf.data) {
-                isPalindrome = false;
-                break;
-            }
-            firstHalf = firstHalf.next;
-            secondHalf = secondHalf.next;
-        }
-
-        if (isPalindrome) {
-            System.out.println("The string is a Palindrome.");
-        } else {
-            System.out.println("The string is NOT a Palindrome.");
-        }
+        System.out.println("Is Palindrome? : " + result);
 
         sc.close();
+    }
+
+    private static boolean check(String s, int start, int end) {
+
+        if (start >= end)
+            return true;
+
+        if (s.charAt(start) != s.charAt(end))
+            return false;
+
+        return check(s, start + 1, end - 1);
     }
 }
